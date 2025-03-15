@@ -120,13 +120,10 @@ function lieAutocorrect() {
     }
 
     let randomLie = funnyCorrections[Math.floor(Math.random() * funnyCorrections.length)];
-    
     outputText.textContent = randomLie;
     outputText.style.opacity = "1";
     outputText.style.transform = "scale(1)";
-    
     outputText.classList.add("shake");
-    
     setTimeout(() => {
         outputText.classList.remove("shake");
     }, 300);
