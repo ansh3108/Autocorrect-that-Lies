@@ -1,7 +1,7 @@
 body {
     font-family: 'Open Sans', sans-serif; 
-    background-color: #1E1E1E; 
-    color: #D4D4D4; 
+    background: linear-gradient(135deg, #1E213A, #161925); /* Refined navy gradient for a modern look */
+    color: #D8DEE9; /* Softer light gray for text */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -10,36 +10,42 @@ body {
     scroll-behavior: smooth; 
 }
 
-
-
 .container {
     text-align: center;
-    background: #252526; 
+    background: #24283B; /* Slightly lighter dark navy for better contrast */
     padding: 20px;
     border-radius: 12px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); 
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4); /* Enhanced shadow for depth */
     width: 80%;
     max-width: 500px;
     transition: opacity 0.5s ease, transform 0.5s ease;
     opacity: 0;
     transform: translateY(20px);
+    animation: slideIn 0.8s ease-out; /* Slide-in animation for the container */
 }
 
+.container:hover {
+    transform: translateY(0) scale(1.03); /* Slightly more pronounced hover effect */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4); /* Enhanced hover shadow */
+}
+
+.container:focus-within {
+    outline: 2px solid #61AFEF; /* Focus style for accessibility */
+    outline-offset: 4px;
+}
 
 .container.loaded {
     opacity: 1;
     transform: translateY(0);
 }
 
-
-
 h1 {
     font-family: 'Montserrat', sans-serif; 
-    color: #61AFEF; 
-    text-shadow: none; 
+    color: #88C0D0; /* Softer blue for headings */
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* Subtle text shadow for depth */
+    font-size: calc(1.5em + 1vw); /* Responsive font size */
+    animation: fadeIn 1s ease-in-out; /* Subtle animation on page load */
 }
-
-
 
 textarea {
     width: 100%;
@@ -47,31 +53,31 @@ textarea {
     padding: 10px;
     border-radius: 5px;
     border: none;
-    background: #333; 
-    color: #D4D4D4; 
+    background: #2B303B; /* Slightly lighter gray-blue for better readability */
+    color: #ECEFF4; /* Light gray text */
     resize: none;
     font-size: 1em;
     box-shadow: none; 
+    transition: border 0.3s ease, background-color 0.3s ease; /* Smooth focus interaction */
 }
 
-
+textarea:hover {
+    background-color: #343A46; /* Slightly lighter hover effect */
+}
 
 textarea:focus {
     outline: none;
-    border: 2px solid #61AFEF;
+    border: 2px solid #88C0D0; /* Softer blue border on focus */
+    animation: glow 0.5s ease-in-out; /* Glow effect on focus */
 }
-
-
 
 textarea::placeholder {
     color: #888; 
 }
 
-
-
 button {
-    background-color: #61AFEF;
-    color: white;
+    background-color: #88C0D0; /* Softer blue for buttons */
+    color: #FFFFFF; /* White text */
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
@@ -79,37 +85,38 @@ button {
     margin-top: 10px;
     font-size: 1em;
     transition: 0.3s;
-    box-shadow: none; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Subtle shadow for buttons */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover animation */
 }
 
-
+button:disabled {
+    background-color: #4C566A; /* Dark gray for disabled buttons */
+    cursor: not-allowed;
+    opacity: 0.6;
+}
 
 button:focus {
     outline: 2px solid #61AFEF;
     outline-offset: 2px;
 }
 
-
-
 button:hover {
-    background-color: #4A9ED9; 
+    background-color: #6BA9C1; /* Slightly darker hover effect */
     transform: scale(1.05);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.4); /* Enhanced hover shadow */
+    animation: pulse 0.5s ease-in-out; /* Pulse animation on hover */
 }
-
-
 
 #outputText {
     margin-top: 20px;
     font-size: 1.2em;
-    color: #E5C07B; 
+    color: #D8DEE9; /* Softer light gray for output text */
     font-weight: bold;
     opacity: 0;
     transform: scale(0.9);
-    transition: opacity 0.5s ease, transform 0.5s ease; 
+    transition: opacity 0.5s ease, transform 0.5s ease, color 0.3s ease; /* Smooth transition */
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3); /* Subtle text shadow */
 }
-
-
 
 .shake {
     animation: shake 0.3s ease-in-out;
@@ -121,4 +128,54 @@ button:hover {
     50% { transform: translateX(5px); }
     75% { transform: translateX(-5px); }
     100% { transform: translateX(0); }
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; transform: translateY(-10px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideIn {
+    0% {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+@keyframes glow {
+    0% {
+        box-shadow: 0 0 0px #88C0D0;
+    }
+    100% {
+        box-shadow: 0 0 10px #88C0D0;
+    }
+}
+
+@media (max-width: 600px) {
+    .container {
+        padding: 15px; /* Adjust padding for smaller screens */
+        border-radius: 8px; /* Slightly smaller radius for smaller screens */
+    }
+
+    h1 {
+        font-size: calc(1.1em + 1vw); /* Slightly smaller font size for smaller screens */
+    }
+
+    textarea {
+        font-size: 0.9em; /* Adjust font size for smaller screens */
+        padding: 8px; /* Adjust padding for smaller screens */
+    }
 }
