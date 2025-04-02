@@ -1,3 +1,4 @@
+
 const funnyCorrections = [
     "I still use Internet Explorer.",
     "I thought WiFi was a vegetable.",
